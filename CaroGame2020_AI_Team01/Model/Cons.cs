@@ -2,6 +2,7 @@
 {
     public class Cons
     {
+        public static int RULE = 5;
         public static int F_HEIGHT = 30;
         public static int F_WIDTH = 30;
         public static int ROWS = 14;

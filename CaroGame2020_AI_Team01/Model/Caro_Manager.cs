@@ -116,7 +116,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countLeft + countRight >= 4;
+            return countLeft + countRight >= Cons.RULE-1;
         }
 
         private bool checkVertical(Field field) //doc
@@ -148,7 +148,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= 4;
+            return countTop + countBottom >= Cons.RULE-1;
         }
 
         private bool checkDiagonalPrimary(Field field) //cheo chinh
@@ -184,7 +184,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= 4;
+            return countTop + countBottom >= Cons.RULE-1;
         }
 
         private bool checkDiagonalSub(Field field) //cheo phu
@@ -221,23 +221,31 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= 4;
+            return countTop + countBottom >= Cons.RULE-1;
         }
 
+        private void EndGame(Player player)
+        {
+            MessageBox.Show(player.Name + " Win Game");
+            return;
+        }
         public void field_Click(Object sender, EventArgs e)
         {
             Field field = sender as Field;
             if (field.BackgroundImage == null)
             {
                 field.BackgroundImage = players[currentPlayer].Mark;
+                if (checkWinGame(field))
+                {
+                    EndGame(players[currentPlayer]);
+                }
+                else
+                {
                 changePlayer();
+                }
             }
 
-            if (checkWinGame(field))
-            {
-                MessageBox.Show("End Game!!!");
-                // pnlBoard.Enabled = false;
-            }
+            
         }
     }
 }
