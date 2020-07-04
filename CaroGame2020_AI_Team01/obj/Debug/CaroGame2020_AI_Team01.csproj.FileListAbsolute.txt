@@ -1,0 +1,10 @@
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe.config
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.pdb
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csprojAssemblyReference.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Properties.Resources.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.GenerateResource.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.CoreCompileInputs.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.pdb
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Caro_Game.resources
