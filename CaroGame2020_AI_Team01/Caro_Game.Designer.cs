@@ -33,6 +33,7 @@ namespace CaroGame2020_AI_Team01
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caro_Game));
             this.pnlOption = new System.Windows.Forms.Panel();
             this.pnlPlayer = new System.Windows.Forms.Panel();
@@ -42,19 +43,22 @@ namespace CaroGame2020_AI_Team01
             this.pgbCoolDown = new System.Windows.Forms.ProgressBar();
             this.tbName = new System.Windows.Forms.TextBox();
             this.pnlStart = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rb_lan = new System.Windows.Forms.RadioButton();
+            this.pnlOptionGame = new System.Windows.Forms.Panel();
+            this.pnlMode = new System.Windows.Forms.Panel();
+            this.rbSolo = new System.Windows.Forms.RadioButton();
+            this.rbAI = new System.Windows.Forms.RadioButton();
+            this.rbLan = new System.Windows.Forms.RadioButton();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.rbAI = new System.Windows.Forms.RadioButton();
-            this.rbSolo = new System.Windows.Forms.RadioButton();
             this.pnlBoard = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timeCoolDown = new System.Windows.Forms.Timer(this.components);
             this.pnlOption.SuspendLayout();
             this.pnlPlayer.SuspendLayout();
             this.pnlStart.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlOptionGame.SuspendLayout();
+            this.pnlMode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +95,7 @@ namespace CaroGame2020_AI_Team01
             // 
             // btnUndo
             // 
+            this.btnUndo.BackgroundImage = global::CaroGame2020_AI_Team01.Properties.Resources.x_color;
             resources.ApplyResources(this.btnUndo, "btnUndo");
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.UseVisualStyleBackColor = true;
@@ -109,28 +114,49 @@ namespace CaroGame2020_AI_Team01
             // pnlStart
             // 
             this.pnlStart.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlStart.Controls.Add(this.panel1);
+            this.pnlStart.Controls.Add(this.pnlOptionGame);
             resources.ApplyResources(this.pnlStart, "pnlStart");
             this.pnlStart.Name = "pnlStart";
             // 
-            // panel1
+            // pnlOptionGame
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.rb_lan);
-            this.panel1.Controls.Add(this.btnNew);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnStart);
-            this.panel1.Controls.Add(this.rbAI);
-            this.panel1.Controls.Add(this.rbSolo);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.pnlOptionGame.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlOptionGame.Controls.Add(this.pnlMode);
+            this.pnlOptionGame.Controls.Add(this.btnNew);
+            this.pnlOptionGame.Controls.Add(this.btnExit);
+            this.pnlOptionGame.Controls.Add(this.btnStart);
+            resources.ApplyResources(this.pnlOptionGame, "pnlOptionGame");
+            this.pnlOptionGame.Name = "pnlOptionGame";
             // 
-            // rb_lan
+            // pnlMode
             // 
-            resources.ApplyResources(this.rb_lan, "rb_lan");
-            this.rb_lan.ForeColor = System.Drawing.Color.Green;
-            this.rb_lan.Name = "rb_lan";
-            this.rb_lan.UseVisualStyleBackColor = true;
+            this.pnlMode.Controls.Add(this.rbSolo);
+            this.pnlMode.Controls.Add(this.rbAI);
+            this.pnlMode.Controls.Add(this.rbLan);
+            resources.ApplyResources(this.pnlMode, "pnlMode");
+            this.pnlMode.Name = "pnlMode";
+            // 
+            // rbSolo
+            // 
+            resources.ApplyResources(this.rbSolo, "rbSolo");
+            this.rbSolo.Checked = true;
+            this.rbSolo.Name = "rbSolo";
+            this.rbSolo.TabStop = true;
+            this.rbSolo.UseVisualStyleBackColor = true;
+            // 
+            // rbAI
+            // 
+            resources.ApplyResources(this.rbAI, "rbAI");
+            this.rbAI.ForeColor = System.Drawing.Color.Red;
+            this.rbAI.Name = "rbAI";
+            this.rbAI.UseVisualStyleBackColor = true;
+            // 
+            // rbLan
+            // 
+            resources.ApplyResources(this.rbLan, "rbLan");
+            this.rbLan.ForeColor = System.Drawing.Color.Green;
+            this.rbLan.Name = "rbLan";
+            this.rbLan.UseVisualStyleBackColor = true;
             // 
             // btnNew
             // 
@@ -144,6 +170,7 @@ namespace CaroGame2020_AI_Team01
             resources.ApplyResources(this.btnExit, "btnExit");
             this.btnExit.Name = "btnExit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnStart
             // 
@@ -151,21 +178,6 @@ namespace CaroGame2020_AI_Team01
             this.btnStart.ForeColor = System.Drawing.Color.Blue;
             this.btnStart.Name = "btnStart";
             this.btnStart.UseVisualStyleBackColor = true;
-            // 
-            // rbAI
-            // 
-            resources.ApplyResources(this.rbAI, "rbAI");
-            this.rbAI.ForeColor = System.Drawing.Color.Red;
-            this.rbAI.Name = "rbAI";
-            this.rbAI.UseVisualStyleBackColor = true;
-            // 
-            // rbSolo
-            // 
-            resources.ApplyResources(this.rbSolo, "rbSolo");
-            this.rbSolo.Checked = true;
-            this.rbSolo.Name = "rbSolo";
-            this.rbSolo.TabStop = true;
-            this.rbSolo.UseVisualStyleBackColor = true;
             // 
             // pnlBoard
             // 
@@ -186,6 +198,7 @@ namespace CaroGame2020_AI_Team01
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlBoard);
             this.Controls.Add(this.pnlOption);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Caro_Game";
@@ -193,7 +206,8 @@ namespace CaroGame2020_AI_Team01
             this.pnlPlayer.ResumeLayout(false);
             this.pnlPlayer.PerformLayout();
             this.pnlStart.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pnlOptionGame.ResumeLayout(false);
+            this.pnlMode.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
@@ -203,18 +217,20 @@ namespace CaroGame2020_AI_Team01
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Label lbUndo;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar pgbCoolDown;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlBoard;
+        private System.Windows.Forms.Panel pnlMode;
         private System.Windows.Forms.Panel pnlOption;
+        private System.Windows.Forms.Panel pnlOptionGame;
         private System.Windows.Forms.Panel pnlPlayer;
         private System.Windows.Forms.Panel pnlStart;
         private System.Windows.Forms.Panel pnlValue;
-        private System.Windows.Forms.RadioButton rb_lan;
         private System.Windows.Forms.RadioButton rbAI;
+        private System.Windows.Forms.RadioButton rbLan;
         private System.Windows.Forms.RadioButton rbSolo;
         private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.Timer timeCoolDown;
 
         #endregion
     }

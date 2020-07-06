@@ -148,13 +148,13 @@
     <value>True</value>
   </data>
   <data name="lbUndo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 9.75pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
   <data name="lbUndo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 91</value>
+    <value>32, 89</value>
   </data>
   <data name="lbUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
+    <value>45, 16</value>
   </data>
   <data name="lbUndo.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="&gt;&gt;lbUndo.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnUndo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
   <data name="btnUndo.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 81</value>
@@ -217,7 +220,7 @@
     <value>3</value>
   </data>
   <data name="tbName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="tbName.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 13</value>
@@ -264,44 +267,131 @@
   <data name="&gt;&gt;pnlPlayer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="rb_lan.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="rbSolo.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="rb_lan.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
+  <data name="rbSolo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="rb_lan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="rbSolo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, -1</value>
   </data>
-  <data name="rb_lan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 4</value>
+  <data name="rbSolo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 40</value>
   </data>
-  <data name="rb_lan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 35</value>
+  <data name="rbSolo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="rb_lan.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="rbSolo.Text" xml:space="preserve">
+    <value>1 vs 1</value>
   </data>
-  <data name="rb_lan.Text" xml:space="preserve">
-    <value>LAN</value>
-  </data>
-  <data name="rb_lan.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="rbSolo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;rb_lan.Name" xml:space="preserve">
-    <value>rb_lan</value>
+  <data name="&gt;&gt;rbSolo.Name" xml:space="preserve">
+    <value>rbSolo</value>
   </data>
-  <data name="&gt;&gt;rb_lan.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbSolo.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rb_lan.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;rbSolo.Parent" xml:space="preserve">
+    <value>pnlMode</value>
   </data>
-  <data name="&gt;&gt;rb_lan.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;rbSolo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rbAI.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="rbAI.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="rbAI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 0</value>
+  </data>
+  <data name="rbAI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 39</value>
+  </data>
+  <data name="rbAI.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rbAI.Text" xml:space="preserve">
+    <value>AI</value>
+  </data>
+  <data name="rbAI.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;rbAI.Name" xml:space="preserve">
+    <value>rbAI</value>
+  </data>
+  <data name="&gt;&gt;rbAI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbAI.Parent" xml:space="preserve">
+    <value>pnlMode</value>
+  </data>
+  <data name="&gt;&gt;rbAI.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rbLan.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="rbLan.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="rbLan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbLan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 0</value>
+  </data>
+  <data name="rbLan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 38</value>
+  </data>
+  <data name="rbLan.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="rbLan.Text" xml:space="preserve">
+    <value>LAN</value>
+  </data>
+  <data name="rbLan.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;rbLan.Name" xml:space="preserve">
+    <value>rbLan</value>
+  </data>
+  <data name="&gt;&gt;rbLan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbLan.Parent" xml:space="preserve">
+    <value>pnlMode</value>
+  </data>
+  <data name="&gt;&gt;rbLan.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pnlMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="pnlMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 41</value>
+  </data>
+  <data name="pnlMode.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pnlMode.Name" xml:space="preserve">
+    <value>pnlMode</value>
+  </data>
+  <data name="&gt;&gt;pnlMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlMode.Parent" xml:space="preserve">
+    <value>pnlOptionGame</value>
+  </data>
+  <data name="&gt;&gt;pnlMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="btnNew.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 11.25pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 11.25pt, style=Bold</value>
   </data>
   <data name="btnNew.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 0</value>
@@ -322,13 +412,13 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnNew.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>pnlOptionGame</value>
   </data>
   <data name="&gt;&gt;btnNew.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="btnExit.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="btnExit.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 50</value>
@@ -349,7 +439,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnExit.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>pnlOptionGame</value>
   </data>
   <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -358,7 +448,7 @@
     <value>Stretch</value>
   </data>
   <data name="btnStart.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="btnStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 50</value>
@@ -379,96 +469,30 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnStart.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>pnlOptionGame</value>
   </data>
   <data name="&gt;&gt;btnStart.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="rbAI.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
-  <data name="rbAI.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
-  </data>
-  <data name="rbAI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 5</value>
-  </data>
-  <data name="rbAI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 35</value>
-  </data>
-  <data name="rbAI.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="rbAI.Text" xml:space="preserve">
-    <value>AI</value>
-  </data>
-  <data name="rbAI.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;rbAI.Name" xml:space="preserve">
-    <value>rbAI</value>
-  </data>
-  <data name="&gt;&gt;rbAI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbAI.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;rbAI.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="rbSolo.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
-  <data name="rbSolo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Bell MT, 12pt, style=Bold</value>
-  </data>
-  <data name="rbSolo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 3</value>
-  </data>
-  <data name="rbSolo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 37</value>
-  </data>
-  <data name="rbSolo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rbSolo.Text" xml:space="preserve">
-    <value>1 vs 1</value>
-  </data>
-  <data name="rbSolo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;rbSolo.Name" xml:space="preserve">
-    <value>rbSolo</value>
-  </data>
-  <data name="&gt;&gt;rbSolo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rbSolo.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;rbSolo.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pnlOptionGame.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 10</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pnlOptionGame.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 81</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="pnlOptionGame.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;pnlOptionGame.Name" xml:space="preserve">
+    <value>pnlOptionGame</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;pnlOptionGame.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pnlOptionGame.Parent" xml:space="preserve">
     <value>pnlStart</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pnlOptionGame.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="pnlStart.Location" type="System.Drawing.Point, System.Drawing">
@@ -567,6 +591,9 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="timeCoolDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -590,6 +617,12 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CARO GAME</value>
+  </data>
+  <data name="&gt;&gt;timeCoolDown.Name" xml:space="preserve">
+    <value>timeCoolDown</value>
+  </data>
+  <data name="&gt;&gt;timeCoolDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Caro_Game</value>

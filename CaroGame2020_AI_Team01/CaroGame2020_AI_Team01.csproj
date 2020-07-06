@@ -52,15 +52,26 @@
         <Compile Include="Caro_Game.Designer.cs">
             <DependentUpon>Caro_Game.cs</DependentUpon>
         </Compile>
+        <Compile Include="FormInputNamePlayer.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="FormInputNamePlayer.Designer.cs">
+          <DependentUpon>FormInputNamePlayer.cs</DependentUpon>
+        </Compile>
         <Compile Include="Model\Caro_Manager.cs" />
         <Compile Include="Model\Cons.cs" />
         <Compile Include="Model\Field.cs" />
+        <Compile Include="Model\TimeCoolDown.cs" />
+        <Compile Include="OptionGame.cs" />
         <Compile Include="OptionPlayer.cs" />
         <Compile Include="Player.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Caro_Game.resx">
           <DependentUpon>Caro_Game.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="FormInputNamePlayer.resx">
+          <DependentUpon>FormInputNamePlayer.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -87,6 +98,7 @@
     <ItemGroup>
       <Content Include="Resources\icon_large.png" />
       <Content Include="Resources\o_color.png" />
+      <Content Include="Resources\undo.png" />
       <Content Include="Resources\x_color.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

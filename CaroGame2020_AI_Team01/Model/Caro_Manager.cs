@@ -18,19 +18,25 @@ namespace CaroGame2020_AI_Team01.Model
         private List<List<Field>> matrix_field = null;
         private List<Player> players = null;
         private int currentPlayer;
+        private OptionGame _optionGame = null;
+        private TimeCoolDown timeCoolDown = null;
+        private bool isEndGame = false;
+        private Stack<Field> undo = null;
 
-        public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer)
+        public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer, OptionGame _optionGame,
+            TimeCoolDown timeCoolDown)
         {
+            this._optionGame = _optionGame;
             this._optionPlayer = _optionPlayer;
             this.pnlBoard = pnlBoard;
-            players = new List<Player>()
-            {
-                new Player("ThanhTri", Image.FromFile(Cons.FULL_PATH + "o_color.png")),
-                new Player("Nevir", Image.FromFile(Cons.FULL_PATH + "x_color.png"))
-            };
-            currentPlayer = 0; //mac dinh nguoi choi 0 choi truoc
-            this._optionPlayer.PnlValue.BackgroundImage = players[currentPlayer].Mark;
-            _optionPlayer.TbName.Text =  players[currentPlayer].Name;
+            this.pnlBoard.Enabled = false;
+            this._optionGame.NewGame.Enabled = false;
+            this.timeCoolDown = timeCoolDown;
+            this.undo = new Stack<Field>();
+            _optionGame.Start.Click += start_Click;
+            _optionGame.NewGame.Click += newGame_Click;
+            _optionPlayer.BtnUndo.Click += Undo_Click;
+            timeCoolDown.MyTimeCoolDown.Tick += timeCoolDown_Tick;
         }
 
 
@@ -59,6 +65,23 @@ namespace CaroGame2020_AI_Team01.Model
             }
         }
 
+        private int getMode()
+        {
+            int result = 0;
+            foreach (RadioButton rdb in _optionGame.PnlMode.Controls)
+            {
+                if (rdb != null)
+                {
+                    if (rdb.Checked)
+                    {
+                        result = _optionGame.PnlMode.Controls.IndexOf(rdb);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         private Point getLocationField(Field field)
         {
             int x = Convert.ToInt32(field.Tag);
@@ -71,7 +94,7 @@ namespace CaroGame2020_AI_Team01.Model
         {
             currentPlayer = currentPlayer == 0 ? 1 : 0;
             //Thay doi ten nguoi choi
-            _optionPlayer.TbName.Text =  players[currentPlayer].Name;
+            _optionPlayer.TbName.Text = players[currentPlayer].Name;
             //Thay doi icon value
             _optionPlayer.PnlValue.BackgroundImage = players[currentPlayer].Mark;
         }
@@ -116,7 +139,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countLeft + countRight >= Cons.RULE-1;
+            return countLeft + countRight >= Cons.RULE - 1;
         }
 
         private bool checkVertical(Field field) //doc
@@ -148,7 +171,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= Cons.RULE-1;
+            return countTop + countBottom >= Cons.RULE - 1;
         }
 
         private bool checkDiagonalPrimary(Field field) //cheo chinh
@@ -184,7 +207,7 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= Cons.RULE-1;
+            return countTop + countBottom >= Cons.RULE - 1;
         }
 
         private bool checkDiagonalSub(Field field) //cheo phu
@@ -221,31 +244,124 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            return countTop + countBottom >= Cons.RULE-1;
+            return countTop + countBottom >= Cons.RULE - 1;
         }
 
         private void EndGame(Player player)
         {
+            isEndGame = true;
+            timeCoolDown.PgbCoolDown.Value = 0;
+            timeCoolDown.MyTimeCoolDown.Stop();
             MessageBox.Show(player.Name + " Win Game");
-            return;
+            ActiveOption();
+            this._optionGame.NewGame.Enabled = true;
         }
+
+        private void ActiveOption()
+        {
+            pnlBoard.Enabled = !pnlBoard.Enabled;
+            _optionGame.Start.Enabled = !_optionGame.Start.Enabled;
+            _optionGame.NewGame.Enabled = !_optionGame.NewGame.Enabled;
+            _optionGame.PnlMode.Enabled = !_optionGame.PnlMode.Enabled;
+            _optionPlayer.BtnUndo.Enabled = false;
+        }
+
+
         public void field_Click(Object sender, EventArgs e)
         {
             Field field = sender as Field;
             if (field.BackgroundImage == null)
             {
                 field.BackgroundImage = players[currentPlayer].Mark;
+                timeCoolDown.PgbCoolDown.Value = 0;
+                timeCoolDown.MyTimeCoolDown.Start();
+                undo.Push(field);
+                _optionPlayer.BtnUndo.Enabled = true;
                 if (checkWinGame(field))
                 {
                     EndGame(players[currentPlayer]);
                 }
                 else
                 {
-                changePlayer();
+                    changePlayer();
                 }
             }
+        }
 
-            
+        public void start_Click(Object sender, EventArgs e)
+        {
+            int mode = getMode();
+            players = new List<Player>();
+            string player1;
+            string player2;
+            if (Cons.MODE[mode].Equals("1 vs 1"))
+            {
+                FormInputNamePlayer f_Input = new FormInputNamePlayer();
+                f_Input.ShowDialog();
+                player1 = f_Input.Player1;
+                player2 = f_Input.Player2;
+                if (player1 != null && player2 != null)
+                {
+                    players.Add(new Player(player1, Cons.MARK[0]));
+                    players.Add(new Player(player2, Cons.MARK[1]));
+                    currentPlayer = 0;
+                    _optionPlayer.TbName.Text = players[currentPlayer].Name;
+                    _optionPlayer.PnlValue.BackgroundImage = Cons.MARK[currentPlayer];
+                    timeCoolDown.MyTimeCoolDown.Start();
+                    ActiveOption();
+                }
+            }
+            else if (Cons.MODE[mode].Equals("AI"))
+            {
+            }
+            else
+            {
+            }
+
+            if (isEndGame)
+            {
+                newGame();
+                _optionGame.NewGame.Enabled = true;
+                isEndGame = false;
+            }
+        }
+
+        public void newGame_Click(Object sender, EventArgs e)
+        {
+            newGame();
+            ActiveOption();
+            isEndGame = false;
+        }
+
+        private void newGame()
+        {
+            timeCoolDown.PgbCoolDown.Value = 0;
+            timeCoolDown.MyTimeCoolDown.Stop();
+            pnlBoard.Controls.Clear();
+            matrix_field = new List<List<Field>>();
+            DrawCaroBoard();
+        }
+
+        private void timeCoolDown_Tick(object sender, EventArgs e)
+        {
+            timeCoolDown.PgbCoolDown.PerformStep();
+            if (timeCoolDown.PgbCoolDown.Value >= timeCoolDown.PgbCoolDown.Maximum)
+            {
+                timeCoolDown.MyTimeCoolDown.Stop();
+                EndGame(players[currentPlayer == 0 ? 1 : 0]);
+            }
+        }
+
+        private void Undo_Click(Object sender, EventArgs e)
+        {
+            if (undo.Count != 0)
+            {
+                Field field = undo.Pop();
+                Point location = getLocationField(field);
+                field.BackgroundImage = null;
+                currentPlayer = currentPlayer == 0 ? 1 : 0;
+                _optionPlayer.BtnUndo.Enabled = false;
+            }
         }
     }
 }
