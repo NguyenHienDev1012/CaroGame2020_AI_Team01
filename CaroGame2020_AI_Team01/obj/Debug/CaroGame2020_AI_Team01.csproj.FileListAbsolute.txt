@@ -19,4 +19,5 @@ D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01
 D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.exe
 D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.pdb
 D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayer.resources
-C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayer.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayerSolo.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNameAI.resources

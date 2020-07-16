@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace CaroGame2020_AI_Team01
 {
-    public partial class FormInputNamePlayer : Form
+    public partial class FormInputNamePlayerSolo : Form
     {
         private string player1;
         private string player2;
@@ -20,7 +20,7 @@ namespace CaroGame2020_AI_Team01
             set => player2 = value;
         }
 
-        public FormInputNamePlayer()
+        public FormInputNamePlayerSolo()
         {
             InitializeComponent();
         }

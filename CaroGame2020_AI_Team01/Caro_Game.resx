@@ -144,47 +144,23 @@
   <data name="&gt;&gt;pnlValue.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lbUndo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbUndo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
-  <data name="lbUndo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 89</value>
-  </data>
-  <data name="lbUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 16</value>
-  </data>
-  <data name="lbUndo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbUndo.Text" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="&gt;&gt;lbUndo.Name" xml:space="preserve">
-    <value>lbUndo</value>
-  </data>
-  <data name="&gt;&gt;lbUndo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbUndo.Parent" xml:space="preserve">
-    <value>pnlPlayer</value>
-  </data>
-  <data name="&gt;&gt;lbUndo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="btnUndo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="btnUndo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bell MT, 9pt, style=Bold</value>
+  </data>
   <data name="btnUndo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 81</value>
+    <value>56, 81</value>
   </data>
   <data name="btnUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 32</value>
+    <value>52, 32</value>
   </data>
   <data name="btnUndo.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="btnUndo.Text" xml:space="preserve">
+    <value>Undo</value>
   </data>
   <data name="&gt;&gt;btnUndo.Name" xml:space="preserve">
     <value>btnUndo</value>
@@ -196,7 +172,7 @@
     <value>pnlPlayer</value>
   </data>
   <data name="&gt;&gt;btnUndo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="pgbCoolDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 49</value>
@@ -217,7 +193,7 @@
     <value>pnlPlayer</value>
   </data>
   <data name="&gt;&gt;pgbCoolDown.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="tbName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
@@ -244,7 +220,7 @@
     <value>pnlPlayer</value>
   </data>
   <data name="&gt;&gt;tbName.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="pnlPlayer.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 111</value>

@@ -5,29 +5,51 @@ namespace CaroGame2020_AI_Team01.Model
 {
     public class Field : Button
     {
-        // private int fHeight;
-        // private int fWidth;
+        private Point position;
+        private Image mark;
 
-        public Field(int fWidth,int fHeight)
+        public Point Position
         {
-            this.Size = new Size(fWidth,fHeight);
+            get => position;
+            set => position = value;
         }
 
-        // public int FHeight
+        public Image Mark
+        {
+            get
+            {
+                return mark;
+            }
+            set
+            {
+                mark = value;
+                this.BackgroundImageLayout = ImageLayout.Stretch;
+                this.BackgroundImage = mark;
+            }
+        }
+
+        public Field()
+        {
+        }
+        public Field(int fWidth, int fHeight)
+        {
+            this.Size = new Size(fWidth, fHeight);
+        }
+
+        // public void setSize(int fWidth, int fHeight)
         // {
-        //     get => fHeight;
-        //     set => fHeight = value;
-        // }
-        //
-        // public int FWidth
-        // {
-        //     get => fWidth;
-        //     set => fWidth = value;
+        //     this.Size = new Size(fWidth, fHeight);
         // }
 
-        // private void setSize(int height, int width)
+        // public void setMark(Image mark)
         // {
-        //     this.Size = new Size(height,width);
+        //     this.BackgroundImageLayout = ImageLayout.Stretch;
+        //     this.BackgroundImage = mark;
+        // }
+        //
+        // public Image getMark()
+        // {
+        //     return this.BackgroundImage;
         // }
     }
 }

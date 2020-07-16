@@ -2,7 +2,7 @@
 
 namespace CaroGame2020_AI_Team01
 {
-    partial class FormInputNamePlayer
+    partial class FormInputNamePlayerSolo
     {
         /// <summary>
         /// Required designer variable.
@@ -102,11 +102,11 @@ namespace CaroGame2020_AI_Team01
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // FormInputNamePlayer
+            // FormInputNamePlayerSolo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 146);
+            this.ClientSize = new System.Drawing.Size(295, 152);
             this.ControlBox = false;
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
@@ -117,7 +117,7 @@ namespace CaroGame2020_AI_Team01
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormInputNamePlayer";
+            this.Name = "FormInputNamePlayerSolo";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter Player Name";

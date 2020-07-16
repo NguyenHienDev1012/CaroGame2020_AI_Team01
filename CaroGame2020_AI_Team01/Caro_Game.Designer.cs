@@ -38,7 +38,6 @@ namespace CaroGame2020_AI_Team01
             this.pnlOption = new System.Windows.Forms.Panel();
             this.pnlPlayer = new System.Windows.Forms.Panel();
             this.pnlValue = new System.Windows.Forms.Panel();
-            this.lbUndo = new System.Windows.Forms.Label();
             this.btnUndo = new System.Windows.Forms.Button();
             this.pgbCoolDown = new System.Windows.Forms.ProgressBar();
             this.tbName = new System.Windows.Forms.TextBox();
@@ -74,7 +73,6 @@ namespace CaroGame2020_AI_Team01
             // 
             this.pnlPlayer.BackColor = System.Drawing.SystemColors.Control;
             this.pnlPlayer.Controls.Add(this.pnlValue);
-            this.pnlPlayer.Controls.Add(this.lbUndo);
             this.pnlPlayer.Controls.Add(this.btnUndo);
             this.pnlPlayer.Controls.Add(this.pgbCoolDown);
             this.pnlPlayer.Controls.Add(this.tbName);
@@ -87,16 +85,10 @@ namespace CaroGame2020_AI_Team01
             resources.ApplyResources(this.pnlValue, "pnlValue");
             this.pnlValue.Name = "pnlValue";
             // 
-            // lbUndo
-            // 
-            resources.ApplyResources(this.lbUndo, "lbUndo");
-            this.lbUndo.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (128)))), ((int) (((byte) (128)))), ((int) (((byte) (255)))));
-            this.lbUndo.Name = "lbUndo";
-            // 
             // btnUndo
             // 
-            this.btnUndo.BackgroundImage = global::CaroGame2020_AI_Team01.Properties.Resources.x_color;
             resources.ApplyResources(this.btnUndo, "btnUndo");
+            this.btnUndo.ForeColor = System.Drawing.Color.Teal;
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.UseVisualStyleBackColor = true;
             // 
@@ -216,7 +208,6 @@ namespace CaroGame2020_AI_Team01
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Label lbUndo;
         private System.Windows.Forms.ProgressBar pgbCoolDown;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlBoard;

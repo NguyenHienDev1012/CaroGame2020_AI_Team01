@@ -4,19 +4,19 @@ namespace CaroGame2020_AI_Team01.Model
 {
     public class TimeCoolDown
     {
-        private Timer MytimeCoolDown;
+        private Timer mytimeCoolDown;
         private ProgressBar pgbCoolDown;
 
-        public TimeCoolDown(Timer timeCoolDown, ProgressBar pgbCoolDown)
+        public TimeCoolDown(Timer mytimeCoolDown, ProgressBar pgbCoolDown)
         {
-            this.MytimeCoolDown = timeCoolDown;
+            this.mytimeCoolDown = mytimeCoolDown;
             this.pgbCoolDown = pgbCoolDown;
         }
 
         public Timer MyTimeCoolDown
         {
-            get => MytimeCoolDown;
-            set => MytimeCoolDown = value;
+            get => mytimeCoolDown;
+            set => mytimeCoolDown = value;
         }
 
         public ProgressBar PgbCoolDown

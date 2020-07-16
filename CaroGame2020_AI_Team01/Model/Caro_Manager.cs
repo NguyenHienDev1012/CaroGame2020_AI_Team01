@@ -14,14 +14,14 @@ namespace CaroGame2020_AI_Team01.Model
     public class Caro_Manager
     {
         private OptionPlayer _optionPlayer = null;
-        private Panel pnlBoard = null;
+        private OptionGame _optionGame = null;
         private List<List<Field>> matrix_field = null;
         private List<Player> players = null;
-        private int currentPlayer;
-        private OptionGame _optionGame = null;
         private TimeCoolDown timeCoolDown = null;
-        private bool isEndGame = false;
         private Stack<Field> undo = null;
+        private Panel pnlBoard = null;
+        private int currentPlayer;
+        private bool isEndGame = false;
 
         public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer, OptionGame _optionGame,
             TimeCoolDown timeCoolDown)
@@ -30,12 +30,12 @@ namespace CaroGame2020_AI_Team01.Model
             this._optionPlayer = _optionPlayer;
             this.pnlBoard = pnlBoard;
             this.pnlBoard.Enabled = false;
-            this._optionGame.NewGame.Enabled = false;
-            this.timeCoolDown = timeCoolDown;
             this.undo = new Stack<Field>();
-            _optionGame.Start.Click += start_Click;
-            _optionGame.NewGame.Click += newGame_Click;
+            _optionGame.BtnStart.Click += start_Click;
+            this._optionGame.BtnNewGame.Enabled = false;
+            _optionGame.BtnNewGame.Click += newGame_Click;
             _optionPlayer.BtnUndo.Click += Undo_Click;
+            this.timeCoolDown = timeCoolDown;
             timeCoolDown.MyTimeCoolDown.Tick += timeCoolDown_Tick;
         }
 
@@ -50,14 +50,13 @@ namespace CaroGame2020_AI_Team01.Model
                 matrix_field.Add(new List<Field>());
                 for (int j = 0; j < Cons.COLUMNS; j++)
                 {
-                    Field field = new Field(Cons.F_HEIGHT, Cons.F_WIDTH);
+                    Field field = new Field(Cons.F_WIDTH, Cons.F_HEIGHT);
                     field.Location = new Point(location_old_x, location_old_y);
-                    field.BackgroundImageLayout = ImageLayout.Stretch;
-                    field.Tag = i.ToString();
                     field.Click += field_Click;
                     location_old_x += Cons.F_WIDTH;
                     pnlBoard.Controls.Add(field);
                     matrix_field[i].Add(field);
+                    field.Position = getLocationField(field, i);
                 }
 
                 location_old_x = 0;
@@ -82,12 +81,10 @@ namespace CaroGame2020_AI_Team01.Model
             return result;
         }
 
-        private Point getLocationField(Field field)
+        private Point getLocationField(Field field, int row)
         {
-            int x = Convert.ToInt32(field.Tag);
-            int y = matrix_field[x].IndexOf(field);
-            Point point = new Point(x, y);
-            return point;
+            int y = matrix_field[row].IndexOf(field);
+            return new Point(row, y);
         }
 
         private void changePlayer()
@@ -112,12 +109,11 @@ namespace CaroGame2020_AI_Team01.Model
 
         private bool checkHorizontal(Field field) //ngang
         {
-            Point location = getLocationField(field);
             int countLeft = 0;
             int countRight = 0;
-            for (int y = location.Y - 1; y >= 0; y--) //tai vi tri do chay ve ben trai
+            for (int y = field.Position.Y - 1; y >= 0; y--) //tai vi tri do chay ve ben trai
             {
-                if (matrix_field[location.X][y].BackgroundImage == matrix_field[location.X][location.Y].BackgroundImage)
+                if (matrix_field[field.Position.X][y].Mark == matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countLeft++;
                 }
@@ -127,9 +123,9 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            for (int y = location.Y + 1; y < Cons.COLUMNS; y++) //tai vi tri do chay ve ben phai
+            for (int y = field.Position.Y + 1; y < Cons.COLUMNS; y++) //tai vi tri do chay ve ben phai
             {
-                if (matrix_field[location.X][y].BackgroundImage == matrix_field[location.X][location.Y].BackgroundImage)
+                if (matrix_field[field.Position.X][y].Mark == matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countRight++;
                 }
@@ -144,12 +140,11 @@ namespace CaroGame2020_AI_Team01.Model
 
         private bool checkVertical(Field field) //doc
         {
-            Point location = getLocationField(field);
             int countTop = 0;
             int countBottom = 0;
-            for (int x = location.X - 1; x >= 0; x--) //tai vi tri do chay len tren
+            for (int x = field.Position.X - 1; x >= 0; x--) //tai vi tri do chay len tren
             {
-                if (matrix_field[x][location.Y].BackgroundImage == matrix_field[location.X][location.Y].BackgroundImage)
+                if (matrix_field[x][field.Position.Y].Mark == matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countTop++;
                 }
@@ -159,9 +154,9 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
-            for (int x = location.X + 1; x < Cons.ROWS; x++) //tai vi tri do chay xuong duoi
+            for (int x = field.Position.X + 1; x < Cons.ROWS; x++) //tai vi tri do chay xuong duoi
             {
-                if (matrix_field[x][location.Y].BackgroundImage == matrix_field[location.X][location.Y].BackgroundImage)
+                if (matrix_field[x][field.Position.Y].Mark == matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countBottom++;
                 }
@@ -176,14 +171,13 @@ namespace CaroGame2020_AI_Team01.Model
 
         private bool checkDiagonalPrimary(Field field) //cheo chinh
         {
-            Point location = getLocationField(field);
             int countTop = 0;
             int countBottom = 0;
-            for (int i = 1; i <= location.X; i++) //tai vi tri do chay len tren
+            for (int i = 1; i <= field.Position.X; i++) //tai vi tri do chay len tren
             {
-                if (location.X - i < 0 || location.Y - i < 0) break;
-                if (matrix_field[location.X - i][location.Y - i].BackgroundImage ==
-                    matrix_field[location.X][location.Y].BackgroundImage)
+                if (field.Position.X - i < 0 || field.Position.Y - i < 0) break;
+                if (matrix_field[field.Position.X - i][field.Position.Y - i].Mark ==
+                    matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countTop++;
                 }
@@ -195,9 +189,9 @@ namespace CaroGame2020_AI_Team01.Model
 
             for (int i = 1; i < Cons.ROWS; i++) //tai vi tri do chay xuong duoi
             {
-                if (location.X + i >= Cons.ROWS || location.Y + i >= Cons.COLUMNS) break;
-                if (matrix_field[location.X + i][location.Y + i].BackgroundImage ==
-                    matrix_field[location.X][location.Y].BackgroundImage)
+                if (field.Position.X + i >= Cons.ROWS || field.Position.Y + i >= Cons.COLUMNS) break;
+                if (matrix_field[field.Position.X + i][field.Position.Y + i].Mark ==
+                    matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countBottom++;
                 }
@@ -212,14 +206,13 @@ namespace CaroGame2020_AI_Team01.Model
 
         private bool checkDiagonalSub(Field field) //cheo phu
         {
-            Point location = getLocationField(field);
             int countTop = 0;
             int countBottom = 0;
-            for (int i = 1; i <= location.X; i++) //tai vi tri do chay len tren x-- y++
+            for (int i = 1; i <= field.Position.X; i++) //tai vi tri do chay len tren x-- y++
             {
-                if (location.X - i < 0 || location.Y + i >= Cons.COLUMNS) break;
-                if (matrix_field[location.X - i][location.Y + i].BackgroundImage ==
-                    matrix_field[location.X][location.Y].BackgroundImage)
+                if (field.Position.X - i < 0 || field.Position.Y + i >= Cons.COLUMNS) break;
+                if (matrix_field[field.Position.X - i][field.Position.Y + i].Mark ==
+                    matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countTop++;
                 }
@@ -232,9 +225,9 @@ namespace CaroGame2020_AI_Team01.Model
             //
             for (int i = 1; i < Cons.ROWS; i++) //tai vi tri do chay xuong duoi x++ y--
             {
-                if (location.X + i >= Cons.ROWS || location.Y - i < 0) break;
-                if (matrix_field[location.X + i][location.Y - i].BackgroundImage ==
-                    matrix_field[location.X][location.Y].BackgroundImage)
+                if (field.Position.X + i >= Cons.ROWS || field.Position.Y - i < 0) break;
+                if (matrix_field[field.Position.X + i][field.Position.Y - i].Mark ==
+                    matrix_field[field.Position.X][field.Position.Y].Mark)
                 {
                     countBottom++;
                 }
@@ -254,14 +247,14 @@ namespace CaroGame2020_AI_Team01.Model
             timeCoolDown.MyTimeCoolDown.Stop();
             MessageBox.Show(player.Name + " Win Game");
             ActiveOption();
-            this._optionGame.NewGame.Enabled = true;
+            this._optionGame.BtnNewGame.Enabled = true;
         }
 
         private void ActiveOption()
         {
             pnlBoard.Enabled = !pnlBoard.Enabled;
-            _optionGame.Start.Enabled = !_optionGame.Start.Enabled;
-            _optionGame.NewGame.Enabled = !_optionGame.NewGame.Enabled;
+            _optionGame.BtnStart.Enabled = !_optionGame.BtnStart.Enabled;
+            _optionGame.BtnNewGame.Enabled = !_optionGame.BtnNewGame.Enabled;
             _optionGame.PnlMode.Enabled = !_optionGame.PnlMode.Enabled;
             _optionPlayer.BtnUndo.Enabled = false;
         }
@@ -269,34 +262,74 @@ namespace CaroGame2020_AI_Team01.Model
 
         public void field_Click(Object sender, EventArgs e)
         {
+            if (players == null || players.Count == 0) return;
             Field field = sender as Field;
-            if (field.BackgroundImage == null)
+            if (field.Mark == null)
             {
-                field.BackgroundImage = players[currentPlayer].Mark;
-                timeCoolDown.PgbCoolDown.Value = 0;
-                timeCoolDown.MyTimeCoolDown.Start();
-                undo.Push(field);
-                _optionPlayer.BtnUndo.Enabled = true;
-                if (checkWinGame(field))
+                if (Cons.MODE[getMode()].Equals("1 vs 1"))
                 {
-                    EndGame(players[currentPlayer]);
+                    field.Mark = (players[currentPlayer].Mark);
+                    timeCoolDown.PgbCoolDown.Value = 0;
+                    timeCoolDown.MyTimeCoolDown.Start();
+                    undo.Push(field);
+                    _optionPlayer.BtnUndo.Enabled = true;
+                    if (checkWinGame(field))
+                    {
+                        EndGame(players[currentPlayer]);
+                    }
+                    else
+                    {
+                        changePlayer();
+                    }
                 }
-                else
+                else if (Cons.MODE[getMode()].Equals("AI"))
                 {
-                    changePlayer();
+                    if (currentPlayer == 1)
+                    {
+                        field.Mark = (players[currentPlayer].Mark);
+                        timeCoolDown.PgbCoolDown.Value = 0;
+                        timeCoolDown.MyTimeCoolDown.Start();
+                        undo.Push(field);
+                        _optionPlayer.BtnUndo.Enabled = true;
+                        
+                        if (checkWinGame(field))
+                        {
+                            EndGame(players[currentPlayer]);
+                        }
+                        else
+                        {
+                            changePlayer();
+                            ComputerPlay();
+                        }
+                    }
                 }
             }
         }
 
+        private void ComputerPlay()
+        {
+            AI com = new AI(matrix_field);
+            Field fi = com.MaxMove();
+            matrix_field[fi.Position.X][fi.Position.Y].Mark = fi.Mark;
+            if (checkWinGame(fi))
+            {
+                EndGame(players[currentPlayer]);
+            }
+            else
+            {
+                changePlayer();
+            }
+        }
         public void start_Click(Object sender, EventArgs e)
         {
             int mode = getMode();
-            players = new List<Player>();
+
             string player1;
             string player2;
             if (Cons.MODE[mode].Equals("1 vs 1"))
             {
-                FormInputNamePlayer f_Input = new FormInputNamePlayer();
+                players = new List<Player>();
+                FormInputNamePlayerSolo f_Input = new FormInputNamePlayerSolo();
                 f_Input.ShowDialog();
                 player1 = f_Input.Player1;
                 player2 = f_Input.Player2;
@@ -313,15 +346,36 @@ namespace CaroGame2020_AI_Team01.Model
             }
             else if (Cons.MODE[mode].Equals("AI"))
             {
+                players = new List<Player>();
+                // 0 COM / 1 Player
+                FormInputNameAI f_input = new FormInputNameAI();
+                f_input.ShowDialog();
+                player1 = "Computer";
+                player2 = f_input.Player;
+                if (player2 != null)
+                {
+                    int x = Cons.ROWS / 2 - 1;
+                    int y = Cons.COLUMNS / 2 - 1;
+                    matrix_field[x][y].Mark = Cons.MARK[0];
+                    currentPlayer = 1;
+
+                    players.Add(new Player(player1, Cons.MARK[0]));
+                    players.Add(new Player(player2, Cons.MARK[1]));
+                    _optionPlayer.TbName.Text = players[currentPlayer].Name;
+                    _optionPlayer.PnlValue.BackgroundImage = Cons.MARK[currentPlayer];
+                    timeCoolDown.MyTimeCoolDown.Start();
+                    ActiveOption();
+                }
             }
             else
             {
+                MessageBox.Show("Chưa làm LAN");
             }
 
             if (isEndGame)
             {
                 newGame();
-                _optionGame.NewGame.Enabled = true;
+                _optionGame.BtnNewGame.Enabled = true;
                 isEndGame = false;
             }
         }
@@ -335,6 +389,11 @@ namespace CaroGame2020_AI_Team01.Model
 
         private void newGame()
         {
+            if (Cons.MODE[getMode()].Equals("AI"))
+            {
+            currentPlayer = 0;
+            }
+            
             timeCoolDown.PgbCoolDown.Value = 0;
             timeCoolDown.MyTimeCoolDown.Stop();
             pnlBoard.Controls.Clear();
@@ -357,8 +416,7 @@ namespace CaroGame2020_AI_Team01.Model
             if (undo.Count != 0)
             {
                 Field field = undo.Pop();
-                Point location = getLocationField(field);
-                field.BackgroundImage = null;
+                field.Mark = null;
                 currentPlayer = currentPlayer == 0 ? 1 : 0;
                 _optionPlayer.BtnUndo.Enabled = false;
             }

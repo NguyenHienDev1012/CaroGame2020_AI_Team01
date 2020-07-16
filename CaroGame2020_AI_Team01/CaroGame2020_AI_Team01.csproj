@@ -52,26 +52,36 @@
         <Compile Include="Caro_Game.Designer.cs">
             <DependentUpon>Caro_Game.cs</DependentUpon>
         </Compile>
-        <Compile Include="FormInputNamePlayer.cs">
+        <Compile Include="FormInputNameAI.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="FormInputNamePlayer.Designer.cs">
-          <DependentUpon>FormInputNamePlayer.cs</DependentUpon>
+        <Compile Include="FormInputNameAI.Designer.cs">
+          <DependentUpon>FormInputNameAI.cs</DependentUpon>
         </Compile>
+        <Compile Include="FormInputNamePlayerSolo.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="FormInputNamePlayerSolo.Designer.cs">
+          <DependentUpon>FormInputNamePlayerSolo.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Model\AI.cs" />
         <Compile Include="Model\Caro_Manager.cs" />
         <Compile Include="Model\Cons.cs" />
         <Compile Include="Model\Field.cs" />
+        <Compile Include="Model\OptionGame.cs" />
+        <Compile Include="Model\OptionPlayer.cs" />
+        <Compile Include="Model\Player.cs" />
         <Compile Include="Model\TimeCoolDown.cs" />
-        <Compile Include="OptionGame.cs" />
-        <Compile Include="OptionPlayer.cs" />
-        <Compile Include="Player.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Caro_Game.resx">
           <DependentUpon>Caro_Game.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="FormInputNamePlayer.resx">
-          <DependentUpon>FormInputNamePlayer.cs</DependentUpon>
+        <EmbeddedResource Include="FormInputNameAI.resx">
+          <DependentUpon>FormInputNameAI.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="FormInputNamePlayerSolo.resx">
+          <DependentUpon>FormInputNamePlayerSolo.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
