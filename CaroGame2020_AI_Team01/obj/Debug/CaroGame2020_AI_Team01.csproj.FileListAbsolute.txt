@@ -1,0 +1,35 @@
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe.config
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.pdb
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csprojAssemblyReference.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Properties.Resources.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.GenerateResource.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.CoreCompileInputs.cache
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.pdb
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Caro_Game.resources
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe.config
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.pdb
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csprojAssemblyReference.cache
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Caro_Game.resources
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Properties.Resources.resources
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.GenerateResource.cache
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.CoreCompileInputs.cache
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.exe
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.pdb
+D:\Trí Tuệ Nhân Tạo\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayer.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayerSolo.resources
+C:\Users\VõThanh\Desktop\COURSES\AI\Project\CaroGame2020_AI_Team01\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNameAI.resources
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe.config
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\bin\Debug\CaroGame2020_AI_Team01.pdb
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Caro_Game.resources
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNameAI.resources
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.FormInputNamePlayerSolo.resources
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.Properties.Resources.resources
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.exe
+C:\Users\PC\Desktop\Caro\CaroGame2020_AI_Team01-ThanhTri\CaroGame2020_AI_Team01\obj\Debug\CaroGame2020_AI_Team01.pdb
