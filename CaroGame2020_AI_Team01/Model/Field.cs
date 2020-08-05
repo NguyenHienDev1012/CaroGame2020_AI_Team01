@@ -8,6 +8,12 @@ namespace CaroGame2020_AI_Team01.Model
         private Point position;
         private Image mark;
 
+        public Field(Point position, Image mark)
+        {
+            this.position = position;
+            this.mark = mark;
+        }
+
         public Point Position
         {
             get => position;
@@ -36,20 +42,5 @@ namespace CaroGame2020_AI_Team01.Model
             this.Size = new Size(fWidth, fHeight);
         }
 
-        // public void setSize(int fWidth, int fHeight)
-        // {
-        //     this.Size = new Size(fWidth, fHeight);
-        // }
-
-        // public void setMark(Image mark)
-        // {
-        //     this.BackgroundImageLayout = ImageLayout.Stretch;
-        //     this.BackgroundImage = mark;
-        // }
-        //
-        // public Image getMark()
-        // {
-        //     return this.BackgroundImage;
-        // }
     }
 }

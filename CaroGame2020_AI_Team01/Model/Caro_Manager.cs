@@ -22,6 +22,9 @@ namespace CaroGame2020_AI_Team01.Model
         private Panel pnlBoard = null;
         private int currentPlayer;
         private bool isEndGame = false;
+        string player1;
+        string player2;
+        private int mode = 0; // 0: 11, 1:AI
 
         public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer, OptionGame _optionGame,
             TimeCoolDown timeCoolDown)
@@ -246,16 +249,20 @@ namespace CaroGame2020_AI_Team01.Model
             timeCoolDown.PgbCoolDown.Value = 0;
             timeCoolDown.MyTimeCoolDown.Stop();
             MessageBox.Show(player.Name + " Win Game");
-            ActiveOption();
+            ActiveOption(false);
             this._optionGame.BtnNewGame.Enabled = true;
         }
 
-        private void ActiveOption()
+        private void ActiveOption(bool ToF)
         {
+            // pnlBoard.Enabled = !pnlBoard.Enabled;
+            // _optionGame.BtnStart.Enabled = !_optionGame.BtnStart.Enabled;
+            // _optionGame.BtnNewGame.Enabled = !_optionGame.BtnNewGame.Enabled;
+            // _optionGame.PnlMode.Enabled = !_optionGame.PnlMode.Enabled;
             pnlBoard.Enabled = !pnlBoard.Enabled;
-            _optionGame.BtnStart.Enabled = !_optionGame.BtnStart.Enabled;
             _optionGame.BtnNewGame.Enabled = !_optionGame.BtnNewGame.Enabled;
-            _optionGame.PnlMode.Enabled = !_optionGame.PnlMode.Enabled;
+            _optionGame.BtnStart.Enabled = ToF;
+            _optionGame.PnlMode.Enabled = ToF;
             _optionPlayer.BtnUndo.Enabled = false;
         }
 
@@ -291,7 +298,7 @@ namespace CaroGame2020_AI_Team01.Model
                         timeCoolDown.MyTimeCoolDown.Start();
                         undo.Push(field);
                         _optionPlayer.BtnUndo.Enabled = true;
-                        
+
                         if (checkWinGame(field))
                         {
                             EndGame(players[currentPlayer]);
@@ -308,8 +315,9 @@ namespace CaroGame2020_AI_Team01.Model
 
         private void ComputerPlay()
         {
-            AI com = new AI(matrix_field);
-            Field fi = com.MaxMove();
+            AI com = new AI();
+            // new ShowScoreBoard(com.SBoard.SBoard).Show();
+            Field fi = com.AIBestMove(matrix_field,2,true);
             matrix_field[fi.Position.X][fi.Position.Y].Mark = fi.Mark;
             if (checkWinGame(fi))
             {
@@ -320,14 +328,14 @@ namespace CaroGame2020_AI_Team01.Model
                 changePlayer();
             }
         }
+
         public void start_Click(Object sender, EventArgs e)
         {
             int mode = getMode();
-
-            string player1;
-            string player2;
+            currentPlayer = 0;
             if (Cons.MODE[mode].Equals("1 vs 1"))
             {
+                mode = 0;
                 players = new List<Player>();
                 FormInputNamePlayerSolo f_Input = new FormInputNamePlayerSolo();
                 f_Input.ShowDialog();
@@ -337,34 +345,22 @@ namespace CaroGame2020_AI_Team01.Model
                 {
                     players.Add(new Player(player1, Cons.MARK[0]));
                     players.Add(new Player(player2, Cons.MARK[1]));
-                    currentPlayer = 0;
                     _optionPlayer.TbName.Text = players[currentPlayer].Name;
                     _optionPlayer.PnlValue.BackgroundImage = Cons.MARK[currentPlayer];
                     timeCoolDown.MyTimeCoolDown.Start();
-                    ActiveOption();
+                    ActiveOption(false);
                 }
             }
             else if (Cons.MODE[mode].Equals("AI"))
             {
-                players = new List<Player>();
+                mode = 1;
                 // 0 COM / 1 Player
                 FormInputNameAI f_input = new FormInputNameAI();
                 f_input.ShowDialog();
-                player1 = "Computer";
                 player2 = f_input.Player;
                 if (player2 != null)
                 {
-                    int x = Cons.ROWS / 2 - 1;
-                    int y = Cons.COLUMNS / 2 - 1;
-                    matrix_field[x][y].Mark = Cons.MARK[0];
-                    currentPlayer = 1;
-
-                    players.Add(new Player(player1, Cons.MARK[0]));
-                    players.Add(new Player(player2, Cons.MARK[1]));
-                    _optionPlayer.TbName.Text = players[currentPlayer].Name;
-                    _optionPlayer.PnlValue.BackgroundImage = Cons.MARK[currentPlayer];
-                    timeCoolDown.MyTimeCoolDown.Start();
-                    ActiveOption();
+                    setFirstAI();
                 }
             }
             else
@@ -382,33 +378,51 @@ namespace CaroGame2020_AI_Team01.Model
 
         public void newGame_Click(Object sender, EventArgs e)
         {
-            newGame();
-            ActiveOption();
+            ActiveOption(true);
             isEndGame = false;
+            newGame();
         }
 
         private void newGame()
         {
-            if (Cons.MODE[getMode()].Equals("AI"))
-            {
             currentPlayer = 0;
-            }
-            
             timeCoolDown.PgbCoolDown.Value = 0;
             timeCoolDown.MyTimeCoolDown.Stop();
             pnlBoard.Controls.Clear();
             matrix_field = new List<List<Field>>();
             DrawCaroBoard();
+            if (mode == 1)
+            {
+                setFirstAI();
+            }
+           
         }
 
+        private void setFirstAI()
+        {
+            players = new List<Player>();
+            player1 = "Computer";
+            if (player2 == null) player2 = "AI";
+            int x = Cons.ROWS / 2 - 1;
+            int y = Cons.COLUMNS / 2 - 1;
+            matrix_field[x][y].Mark = Cons.MARK[0];
+            currentPlayer = 1;
+            players.Add(new Player(player1, Cons.MARK[0]));
+            players.Add(new Player(player2, Cons.MARK[1]));
+            _optionPlayer.TbName.Text = players[currentPlayer].Name;
+            _optionPlayer.PnlValue.BackgroundImage = Cons.MARK[currentPlayer];
+            timeCoolDown.MyTimeCoolDown.Start();
+            ActiveOption(false);
+            pnlBoard.Enabled = true;
+        }
         private void timeCoolDown_Tick(object sender, EventArgs e)
         {
-            timeCoolDown.PgbCoolDown.PerformStep();
-            if (timeCoolDown.PgbCoolDown.Value >= timeCoolDown.PgbCoolDown.Maximum)
-            {
-                timeCoolDown.MyTimeCoolDown.Stop();
-                EndGame(players[currentPlayer == 0 ? 1 : 0]);
-            }
+            // timeCoolDown.PgbCoolDown.PerformStep();
+            // if (timeCoolDown.PgbCoolDown.Value >= timeCoolDown.PgbCoolDown.Maximum)
+            // {
+            //     timeCoolDown.MyTimeCoolDown.Stop();
+            //     EndGame(players[currentPlayer == 0 ? 1 : 0]);
+            // }
         }
 
         private void Undo_Click(Object sender, EventArgs e)
