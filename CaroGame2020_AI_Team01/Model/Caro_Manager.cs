@@ -25,6 +25,7 @@ namespace CaroGame2020_AI_Team01.Model
         string player1;
         string player2;
         private int mode = 0; // 0: 11, 1:AI
+        BoardState boardState = new BoardState(Cons.ROWS,Cons.COLUMNS);
 
         public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer, OptionGame _optionGame,
             TimeCoolDown timeCoolDown)
@@ -313,11 +314,37 @@ namespace CaroGame2020_AI_Team01.Model
             }
         }
 
+        public int[,] convertToInt()
+        {
+            int[,] rs = new int[Cons.ROWS, Cons.COLUMNS];
+            for (int i = 0; i < Cons.ROWS; i++)
+            {
+                for (int j = 0; j < Cons.COLUMNS; j++)
+                {
+                    if (matrix_field[i][j].Mark == Cons.MARK[0])
+                    {
+                        rs[i, j] = 2;
+                    }
+                    else if (matrix_field[i][j].Mark == Cons.MARK[1])
+                    {
+                        rs[i, j] = 1;
+                    }
+                    else
+                    {
+                        rs[i, j] = 0;
+                    }
+                }
+            }
+            return rs;
+        }
+
         private void ComputerPlay()
         {
-            AI com = new AI();
-            // new ShowScoreBoard(com.SBoard.SBoard).Show();
-            Field fi = com.AIBestMove(matrix_field,2,true);
+            boardState.BoardArr = convertToInt();
+            ComputerPlayer c= new ComputerPlayer(boardState);
+            Field fi = c.AI();
+            // AI com = new AI();
+            // Field fi = com.AIBestMove(matrix_field, 1, true);
             matrix_field[fi.Position.X][fi.Position.Y].Mark = fi.Mark;
             if (checkWinGame(fi))
             {
@@ -395,7 +422,6 @@ namespace CaroGame2020_AI_Team01.Model
             {
                 setFirstAI();
             }
-           
         }
 
         private void setFirstAI()
@@ -415,6 +441,7 @@ namespace CaroGame2020_AI_Team01.Model
             ActiveOption(false);
             pnlBoard.Enabled = true;
         }
+
         private void timeCoolDown_Tick(object sender, EventArgs e)
         {
             // timeCoolDown.PgbCoolDown.PerformStep();
