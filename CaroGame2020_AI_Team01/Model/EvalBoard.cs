@@ -1,19 +1,19 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace CaroGame2020_AI_Team01.Model
 {
     public class EvalBoard
     {
         public int rows, columns;
-        public int[,] EBoard;
-        public int evaluationBoard = 0;
+        public int[,] EBoard; // Mang luu tat ca diem
+        public int maxScore = 0; // Diem max hien tai
 
         public EvalBoard(int rows, int columns)
         {
             this.rows = rows;
             this.columns = columns;
             EBoard = new int[rows, columns];
-            // ResetBoard();
         }
 
         public void resetBoard()
@@ -21,11 +21,7 @@ namespace CaroGame2020_AI_Team01.Model
             for (int r = 0; r < rows; r++)
             for (int c = 0; c < columns; c++)
                 EBoard[r, c] = 0;
-        }
-
-        public void setPosition(int x, int y, int diem)
-        {
-            EBoard[x, y] = diem;
+            // EBoard = new int[rows, columns];
         }
 
         public int[] MaxPos()
@@ -49,9 +45,22 @@ namespace CaroGame2020_AI_Team01.Model
             {
                 return null;
             }
-
-            evaluationBoard = Max;
+            maxScore = Max;
             return p;
+        }
+
+        public List<int[]> listMove()
+        {
+            List<int[]> rs = new List<int[]>();
+            for (int i = 0; i <5; i++)
+            {
+                int[] point = MaxPos();
+                if(point==null) break;
+                rs.Add(point);
+                EBoard[rs[i][0],rs[i][1]] = 0;
+            }
+
+            return rs;
         }
     }
 }

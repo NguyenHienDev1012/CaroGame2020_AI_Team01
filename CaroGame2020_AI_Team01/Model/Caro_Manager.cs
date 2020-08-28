@@ -25,7 +25,6 @@ namespace CaroGame2020_AI_Team01.Model
         string player1;
         string player2;
         private int mode = 0; // 0: 11, 1:AI
-        BoardState boardState = new BoardState(Cons.ROWS,Cons.COLUMNS);
 
         public Caro_Manager(Panel pnlBoard, OptionPlayer _optionPlayer, OptionGame _optionGame,
             TimeCoolDown timeCoolDown)
@@ -335,16 +334,20 @@ namespace CaroGame2020_AI_Team01.Model
                     }
                 }
             }
+
             return rs;
         }
 
+        BoardState boardState = new BoardState(Cons.ROWS, Cons.COLUMNS);
+
         private void ComputerPlay()
         {
-            boardState.BoardArr = convertToInt();
-            ComputerPlayer c= new ComputerPlayer(boardState);
-            Field fi = c.AI();
-            // AI com = new AI();
-            // Field fi = com.AIBestMove(matrix_field, 1, true);
+            // boardState.matrix_field = new List<List<Field>>(matrix_field);
+            // ComputerPlayer com = new ComputerPlayer(boardState);
+            // Field fi = com.AI();
+            // matrix_field[fi.Position.X][fi.Position.Y].Mark = fi.Mark;
+            AI com = new AI(matrix_field);
+            Field fi = com.MaxMove();
             matrix_field[fi.Position.X][fi.Position.Y].Mark = fi.Mark;
             if (checkWinGame(fi))
             {
