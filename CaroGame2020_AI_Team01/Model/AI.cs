@@ -7,18 +7,15 @@ namespace CaroGame2020_AI_Team01.Model
 {
     public class AI
     {
-        //Dept
-        private int depth = 5;
-
         //Mark
         private Image computerMark = Cons.MARK[0]; //o
         private Image HumanMark = Cons.MARK[1]; //x
 
         //Score
-        private int[] AScore = {0, 4, 27, 256, 1458};
-        private int[] DScore = {0, 2, 9, 99, 769};
+        private int[] AScore = {0, 4, 27, 256, 1458, 4374};
+        private int[] DScore = {0, 2, 9, 99, 769, 3845};
 
-        private int _x = 0, _y = 0;
+        // private int _x = 0, _y = 0;
 
         private int[] goPoint = new int[2];
 
@@ -60,7 +57,6 @@ namespace CaroGame2020_AI_Team01.Model
         public List<int[]> GetPossibleMoves(int[,] boardState)
         {
             List<int[]> rs = new List<int[]>();
-            int[] point = new int[2];
             for (int i = 0; i < Cons.ROWS; i++)
             {
                 for (int j = 0; j < Cons.COLUMNS; j++)
@@ -69,66 +65,42 @@ namespace CaroGame2020_AI_Team01.Model
                     {
                         if (i - 1 > 0 && j - 1 > 0 && boardState[i - 1, j - 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i - 1;
-                            point[1] = j - 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i - 1, j - 1});
                         }
 
                         if (i - 1 > 0 && boardState[i - 1, j] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i - 1;
-                            point[1] = j;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i - 1, j});
                         }
 
                         if (i - 1 > 0 && j + 1 < Cons.COLUMNS && boardState[i - 1, j + 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i - 1;
-                            point[1] = j + 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i - 1, j + 1});
                         }
 
                         if (j - 1 > 0 && boardState[i, j - 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i;
-                            point[1] = j - 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i, j - 1});
                         }
 
                         if (i + 1 < Cons.ROWS && j - 1 > 0 && boardState[i + 1, j - 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i + 1;
-                            point[1] = j - 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i + 1, j - 1});
                         }
 
                         if (i + 1 < Cons.ROWS && boardState[i + 1, j] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i + 1;
-                            point[1] = j;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i + 1, j});
                         }
 
                         if (i + 1 < Cons.ROWS && j + 1 < Cons.COLUMNS && boardState[i + 1, j + 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i + 1;
-                            point[1] = j + 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i + 1, j + 1});
                         }
 
                         if (j + 1 < Cons.COLUMNS && boardState[i, j + 1] == 0)
                         {
-                            point = new int[2];
-                            point[0] = i;
-                            point[1] = j + 1;
-                            rs.Add(point);
+                            rs.Add(new int[2] {i, j + 1});
                         }
                     }
                 }
@@ -139,8 +111,8 @@ namespace CaroGame2020_AI_Team01.Model
 
         public Field MaxMove()
         {
-            int[,] boardState = GetBoardMatrix(this.matrix_field);
-            int a = Minimax(3, boardState, 0, 0, true);
+            int[,] boardState = GetBoardMatrix(MatrixField);
+            int a = Minimax(2, boardState, 0, 0, false);
             return new Field(new Point(goPoint[0], goPoint[1]), computerMark);
         }
 
@@ -148,7 +120,7 @@ namespace CaroGame2020_AI_Team01.Model
         {
             if (depth == 0)
             {
-                return Heuristic(boardState, x, y,!isMaxPlayer);
+                return Heuristic(boardState, x, y, !isMaxPlayer);
             }
 
             List<int[]> possibleMoves = GetPossibleMoves(boardState);
@@ -168,7 +140,7 @@ namespace CaroGame2020_AI_Team01.Model
                         if (value > maxscore)
                         {
                             maxscore = value;
-                            goPoint = new int[2];
+                            // goPoint = new int[2];
                             goPoint = move;
                         }
                     }
@@ -188,11 +160,6 @@ namespace CaroGame2020_AI_Team01.Model
                         maxscore = Math.Min(maxscore, Minimax(depth - 1, boardState, move[0], move[1], true));
                         // int value = Minimax(depth - 1, boardState,move[0], move[1], true);
                         boardState[move[0], move[1]] = 0;
-                        // if (maxscore > value)
-                        // {
-                        //     maxscore = value;
-                        //     goPoint = move;
-                        // }
                     }
                 }
 
@@ -200,14 +167,69 @@ namespace CaroGame2020_AI_Team01.Model
             }
         }
 
-        public int Heuristic(int[,] boardState, int row, int column,bool isMaxplayer)
+        #region Minimax vét cạn
+
+        public int MinimaxFull(int depth, int[,] boardState, int x, int y, bool isMaxPlayer)
+        {
+            if (depth == 0)
+            {
+                return Heuristic(boardState, x, y, !isMaxPlayer);
+            }
+
+            if (isMaxPlayer)
+            {
+                int maxscore = Int32.MinValue;
+                for (int i = 0; i < Cons.ROWS; i++)
+                {
+                    for (int j = 0; j < Cons.COLUMNS; j++)
+                    {
+                        if (boardState[i, j] == 0)
+                        {
+                            boardState[i, j] = 1;
+                            int value = Minimax(depth - 1, boardState, i, j, false);
+                            boardState[i, j] = 0;
+                            if (value > maxscore)
+                            {
+                                maxscore = value;
+                                goPoint = new int[2]{i,j};
+                            }
+                        }
+                    }
+                }
+
+                return maxscore;
+            }
+            else
+            {
+                int maxscore = Int32.MaxValue;
+                for (int i = 0; i < Cons.ROWS; i++)
+                {
+                    for (int j = 0; j < Cons.COLUMNS; j++)
+                    {
+                        if (boardState[i, j] == 0)
+                        {
+                            boardState[i, j] = 2;
+                            maxscore = Math.Min(maxscore, Minimax(depth - 1, boardState, i, j, true));
+                            // int value = Minimax(depth - 1, boardState, i, j, true);
+                            boardState[i, j] = 0;
+                        }
+                    }
+                }
+
+                return maxscore;
+            }
+        }
+
+        #endregion
+
+        public int Heuristic(int[,] boardState, int row, int column, bool isMaxplayer)
         {
             int Atack = AScoreSum(boardState, row, column, isMaxplayer);
             int Defense = DScoreSum(boardState, row, column, isMaxplayer);
             return Atack >= Defense ? Atack : Defense;
         }
 
-        private int AScoreSum(int[,] boardState, int x, int y,bool isMaxplayer) //Tong Diem Tan Cong
+        private int AScoreSum(int[,] boardState, int x, int y, bool isMaxplayer) //Tong Diem Tan Cong
         {
             int valuePlayerMax = isMaxplayer ? 1 : 2;
             int valuePlayerMin = valuePlayerMax == 1 ? 2 : 1;
@@ -248,7 +270,7 @@ namespace CaroGame2020_AI_Team01.Model
                 {
                     myArmy++;
                 }
-                else if (boardState[x, i] == 2)
+                else if (boardState[x, i] == valuePlayerMin)
                 {
                     enemy++;
                     break;
@@ -258,15 +280,19 @@ namespace CaroGame2020_AI_Team01.Model
                     break;
                 }
             }
-
-            if (enemy == valuePlayerMin) return 0;
-            if (myArmy == 4)
+            if (enemy == 2) return 0;
+            if (myArmy > 4)
+            {
+                return this.AScore[4] * 3;
+            }
+            else if (myArmy == 3 && enemy == 0)
             {
                 return this.AScore[myArmy] * 2;
             }
-
-            if (myArmy > 4) myArmy = 4;
-            S_Horizontal = this.AScore[myArmy];
+            else
+            {
+                S_Horizontal = this.AScore[myArmy]-this.DScore[enemy];
+            }
             myArmy = enemy = 0;
 
             #endregion
@@ -310,15 +336,21 @@ namespace CaroGame2020_AI_Team01.Model
                     break;
                 }
             }
-
-            if (enemy == 2) return 0;
-            if (myArmy == 4)
+            
+            if (myArmy > 4)
+            {
+                return this.AScore[4] * 3;
+            }
+            else if (myArmy == 3 && enemy == 0)
             {
                 return this.AScore[myArmy] * 2;
             }
+            else
+            {
+                if (enemy == 2) return 0;
+                S_Vertical = this.AScore[myArmy]-this.DScore[enemy];
+            }
 
-            if (myArmy > 4) myArmy = 4;
-            S_Vertical = this.AScore[myArmy];
             myArmy = enemy = 0;
 
             #endregion
@@ -364,15 +396,20 @@ namespace CaroGame2020_AI_Team01.Model
                     break;
                 }
             }
-
-            if (enemy == 2) return 0;
-            if (myArmy == 4)
+            if (myArmy > 4)
+            {
+                return this.AScore[4] * 3;
+            }
+            else if (myArmy == 3 && enemy == 0)
             {
                 return this.AScore[myArmy] * 2;
             }
+            else
+            {
+                if (enemy == 2) return 0;
+                S_DiagonalPrimary = this.AScore[myArmy]-this.DScore[enemy];
+            }
 
-            if (myArmy > 4) myArmy = 4;
-            S_DiagonalPrimary = this.AScore[myArmy];
             myArmy = enemy = 0;
 
             #endregion
@@ -418,22 +455,26 @@ namespace CaroGame2020_AI_Team01.Model
                     break;
                 }
             }
-
-            if (enemy == 2) return 0;
-            if (myArmy >= 4)
+            if (myArmy > 4)
             {
-                return this.AScore[4] * 2;
+                return this.AScore[4] * 3;
             }
-
-            if (myArmy > 4) myArmy = 4;
-            S_DiagonalSub = this.AScore[myArmy];
+            else if (myArmy == 3 && enemy == 0)
+            {
+                return this.AScore[myArmy] * 2;
+            }
+            else
+            {
+                if (enemy == 2) return 0;
+                S_DiagonalSub = this.AScore[myArmy]-this.DScore[enemy];
+            }
 
             #endregion
 
             return S_Horizontal + S_Vertical + S_DiagonalPrimary + S_DiagonalSub;
         }
 
-        private int DScoreSum(int[,] boardState, int x, int y,bool isMaxplayer) //Tong Diem Phong Ngu
+        private int DScoreSum(int[,] boardState, int x, int y, bool isMaxplayer) //Tong Diem Phong Ngu
         {
             int valuePlayerMax = isMaxplayer ? 1 : 2;
             int valuePlayerMin = valuePlayerMax == 1 ? 2 : 1;
@@ -484,13 +525,12 @@ namespace CaroGame2020_AI_Team01.Model
                     break;
                 }
             }
-
             if (myArmy == 2) return 0;
-            if (enemy > 3)
+            if (enemy >= 3)
             {
-                return this.DScore[4] * 2;
+                return myArmy==0?this.DScore[enemy] * 3:this.DScore[enemy] * 2;
             }
-
+            
             S_Horizontal = this.DScore[enemy] - this.AScore[myArmy];
             myArmy = enemy = 0;
 
@@ -536,12 +576,12 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
+           
             if (myArmy == 2) return 0;
-            if (enemy > 3)
+            if (enemy >= 3)
             {
-                return this.DScore[4] * 2;
+                return myArmy==0?this.DScore[enemy] * 3:this.DScore[enemy] * 2;
             }
-
             S_Vertical = this.DScore[enemy] - this.AScore[myArmy];
             myArmy = enemy = 0;
 
@@ -589,12 +629,12 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
+           
             if (myArmy == 2) return 0;
-            if (enemy > 3)
+            if (enemy >= 3)
             {
-                return this.DScore[4] * 2;
+                return myArmy==0?this.DScore[enemy] * 3:this.DScore[enemy] * 2;
             }
-
             S_DiagonalPrimary = this.DScore[enemy] - this.AScore[myArmy];
             myArmy = enemy = 0;
 
@@ -642,12 +682,12 @@ namespace CaroGame2020_AI_Team01.Model
                 }
             }
 
+           
             if (myArmy == 2) return 0;
-            if (enemy > 3)
+            if (enemy >= 3)
             {
-                return this.DScore[4] * 2;
+                return myArmy==0?this.DScore[enemy] * 3:this.DScore[enemy] * 2;
             }
-
             S_DiagonalSub = this.DScore[enemy] - this.AScore[myArmy];
 
             #endregion

@@ -67,7 +67,6 @@
         <Compile Include="Model\AI.cs" />
         <Compile Include="Model\BoardState.cs" />
         <Compile Include="Model\Caro_Manager.cs" />
-        <Compile Include="Model\ComputerPlayer.cs" />
         <Compile Include="Model\Cons.cs" />
         <Compile Include="Model\EvalBoard.cs" />
         <Compile Include="Model\Field.cs" />
